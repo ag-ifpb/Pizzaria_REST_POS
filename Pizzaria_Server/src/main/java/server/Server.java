@@ -46,7 +46,7 @@ public class Server {
         Router routerBasico = new Router();
         routerBasico.attach("/pedido", PedidoRecurso.class);  // abrir comanda
         routerBasico.attach("/pedido/{numeroComanda}", PedidoRecurso.class);  // fazer pedido e entregar pedido
-        routerBasico.attach("/produto", ProdutoRecurso.class);  // baixar produto no estoque
+        routerBasico.attach("/produto/{nomeProduto}", ProdutoRecurso.class);  // baixar produto no estoque
         routerBasico.attach("/contasapagar/{tipoConta}", ContasAPagarRecurso.class);  // cadastrar conta a pagar
         routerBasico.attach("/contasapagar/listar/{param}", ContasAPagarRecurso.class);  // listar contas por status e por fornecedor
         routerBasico.attach("/produto/cad", ProdutoRecurso.class);  // cadastrar produto no estoque

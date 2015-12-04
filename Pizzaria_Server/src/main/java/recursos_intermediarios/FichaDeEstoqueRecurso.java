@@ -28,6 +28,7 @@ public class FichaDeEstoqueRecurso extends ServerResource {
 
         JsonRepresentation jsonRep = new JsonRepresentation(r);
         JSONObject json = jsonRep.getJsonObject();
+        String nomeProduto = json.getString("produto");
 
         // entregar pedido
         ClientResource resource = new ClientResource("http://localhost:80/pizzariaBasico/pedido/" + numeroComanda);
@@ -35,7 +36,7 @@ public class FichaDeEstoqueRecurso extends ServerResource {
         ReadableRepresentation rp = (ReadableRepresentation) resource.put(repr);
 
         // dar baixa no estoque
-        ClientResource resource2 = new ClientResource("http://localhost:80/pizzariaBasico/produto");
+        ClientResource resource2 = new ClientResource("http://localhost:80/pizzariaBasico/produto/" + nomeProduto);
         JsonRepresentation repr2 = new JsonRepresentation(json);
         ReadableRepresentation rp2 = (ReadableRepresentation) resource2.put(repr2);
 

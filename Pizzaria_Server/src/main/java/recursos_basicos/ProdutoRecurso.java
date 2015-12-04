@@ -27,12 +27,12 @@ public class ProdutoRecurso extends ServerResource {
 
     @Put
     public Representation baixarEstoque(Representation r) throws IOException, JSONException {
+        String nomeProduto = (String) getRequestAttributes().get("nomeProduto");
         JsonRepresentation jsonRep = new JsonRepresentation(r);
         JSONObject json = jsonRep.getJsonObject();
-        String produto = json.getString("produto");
         int qtde = json.getInt("qtde");
 
-        produtoDao.baixaNoEstoque(produto, qtde);
+        produtoDao.baixaNoEstoque(nomeProduto, qtde);
         return new StringRepresentation("Baixa no estoque!");
 
     }
